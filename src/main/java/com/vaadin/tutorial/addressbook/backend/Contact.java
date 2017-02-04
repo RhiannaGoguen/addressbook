@@ -1,3 +1,10 @@
+/*
+ * Left the class name as the same so to avoid
+ * less editing and possible sadness when compiling. Hope that's
+ * alright 
+ */
+
+
 package com.vaadin.tutorial.addressbook.backend;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -17,60 +24,33 @@ public class Contact implements Serializable, Cloneable {
 
     private Long id;
 
+    //changed phone to task, email to startDate (of task) and birthdate to (expected) endDate (of task)
     private String firstName = "";
     private String lastName = "";
-    private String phone = "";
-    private String email = "";
-    private Date birthDate;
+    private String task = "";
+    private Date startDate;
+    private Date endDate;
 
-    public Long getId() {
-        return id;
-    }
+    //gets and set are edited to correspond to the variable changes
+    public Long getId() {return id;}
+    public void setId(Long id) {this.id = id;}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getFirstName() {return firstName;}
+    public void setFirstName(String firstName) {this.firstName = firstName;}
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public String getLastName() {return lastName;}
+    public void setLastName(String lastName) {this.lastName = lastName;}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    public String getTask() {return task;}
+    public void setTask(String task) {this.task = task;}
 
-    public String getLastName() {
-        return lastName;
-    }
+    public Date getStartDate() {return startDate;}
+    public void setStartDate(Date startDate) {this.startDate = startDate;}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    public Date getEndDate() {return endDate;}
+    public void setEndDate(Date endDate) {this.endDate = endDate;}
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
+    //not sure what this does, I'll leave it as it is
     @Override
     public Contact clone() throws CloneNotSupportedException {
         try {
@@ -80,11 +60,12 @@ public class Contact implements Serializable, Cloneable {
         }
     }
 
+    //edited variable names to correspond
     @Override
     public String toString() {
-        return "Contact{" + "id=" + id + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", phone=" + phone + ", email="
-                + email + ", birthDate=" + birthDate + '}';
+        return "TodoTask{" + "id=" + id + ", firstName=" + firstName
+                + ", lastName=" + lastName + ", task=" + task + ", startDate="
+                + startDate + ", endDate=" + endDate + '}';
     }
 
 }

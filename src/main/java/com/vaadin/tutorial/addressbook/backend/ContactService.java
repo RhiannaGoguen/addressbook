@@ -1,3 +1,9 @@
+/*
+ * Left all the class and method names as the same so to avoid
+ * less editing and possible sadness when compiling. Hope that's
+ * alright 
+ */
+
 package com.vaadin.tutorial.addressbook.backend;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -25,6 +31,15 @@ public class ContactService {
             "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin",
             "Thompson", "Young", "King", "Robinson" };
 
+    //make array of dummy tasks to randomly assign
+    static String[] Tasks = {"Organize files", "Alphabetize foods", "Build a house", 
+    		"Purchase supplies", "Purchase rations", "Label things", "Sort things", "Do something",
+    		"Be productive", "Finish SE Assignment", "Finish PPL Assignment", 
+    		"Finish Network Computing Assignment", "Study for Quiz", "Study for Exam",
+    		"Clean the house", "Fix the sink", "Do laundry", "Make Dinner", "Pack Lunch",
+    		"Do Readings"};
+    
+    
     private static ContactService instance;
 
     public static ContactService createDemoService() {
@@ -33,17 +48,25 @@ public class ContactService {
             final ContactService contactService = new ContactService();
 
             Random r = new Random(0);
-            Calendar cal = Calendar.getInstance();
+            
+            //Using two calendar objects for startDate and endDate, respectively
+            Calendar calStart = Calendar.getInstance();
+            Calendar calEnd = Calendar.getInstance();
             for (int i = 0; i < 100; i++) {
                 Contact contact = new Contact();
                 contact.setFirstName(fnames[r.nextInt(fnames.length)]);
                 contact.setLastName(lnames[r.nextInt(fnames.length)]);
-                contact.setEmail(contact.getFirstName().toLowerCase() + "@"
-                        + contact.getLastName().toLowerCase() + ".com");
-                contact.setPhone("+ 358 555 " + (100 + r.nextInt(900)));
-                cal.set(1930 + r.nextInt(70),
-                        r.nextInt(11), r.nextInt(28));
-                contact.setBirthDate(cal.getTime());
+                contact.setTask(Tasks[r.nextInt(Tasks.length)]);
+                
+                calStart.set(2010 + r.nextInt(7), r.nextInt(11), r.nextInt(28));
+                contact.setStartDate(calStart.getTime());
+                calEnd.set(2010 + r.nextInt(7), r.nextInt(11), r.nextInt(28));
+                
+                //to make sure that the end
+                while(calEnd.before(calStart)){
+                	calEnd.set(2010 + r.nextInt(7), r.nextInt(11), r.nextInt(28));
+                }
+                contact.setEndDate(calEnd.getTime());
                 contactService.save(contact);
             }
             instance = contactService;
@@ -52,6 +75,8 @@ public class ContactService {
         return instance;
     }
 
+    //I believe these are okay the way they are?
+    
     private HashMap<Long, Contact> contacts = new HashMap<>();
     private long nextId = 0;
 
