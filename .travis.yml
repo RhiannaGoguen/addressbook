@@ -1,5 +1,13 @@
 language: java
 install:
 - mvn install
-jdk: 
+jdk:
 - oraclejdk8
+deploy:
+  provider: heroku
+  api_key:
+    secure: ER1gp2BQbl6undIzGtuYcVQ+Hnl1oDNkz1do11CwiCFGD+A2uVBm6z1CddQibgQyJd3i/CzO+JyhASM2wCFSI7di79Dx2BL30xX7kYSleTRevMnFcHZRsamw98t1d0vNaujnzXwFouIuDxqE3zr7JVEDK/xzt74TJe4nohfs0VFnfyOlkxdB7RNfxZTewti1sIi9fzUMIBvHjsHnwfsr9u/ie3gIx6Xm101MQX+CgXWQ+CdG+oIWMgTlbeEu0qSsxMQZajqcD8lsybh30LWd4xoIBfFJa/rXKTClEccweBiAlGVa5tsFG5nSFX1XTQOMSEeQ+YzPMyvak5OgSE91VulEmIck3+tgkGUUqP4/5a8gbbb18f1iKmQSfpJFDECwtzA6fxBP1TOjrzs5JsseMhWdtbXjMCsU5V+yvWTrzFobtwM5GLIYVzrI9PAOheftHDUng9GjuXSSDPSPK0wMe08SqcN/p3mxBzUicwTRhiWPRG9O2d89dKcYf2unZ4jRgnlEBusGSej/ivnNEVb9mYK1N7+/J68dk2h/7XpET75dau7ytEucAoHBQ0n1gsRbGp0beukRqOXNQv3NR5uH98omykPOg6P1Fu2A39JGpzCjWR3yT/nKSz+2RELjK2ieSEDkuMbc/c/IA8fn6C1hHdY9dgy/IuksYdFaJHmRDKk=
+  app: rhianna-addressbook
+  on:
+    repo: RhiannaGoguen/addressbook
+    branch: todo_tasks
